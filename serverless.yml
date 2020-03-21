@@ -1,0 +1,27 @@
+service: cv-19-res-support
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-west-2
+  memorySize: 128
+  timeout: 30
+functions:
+  createResidentSupportRequest:
+    handler: handler.createResidentSupportRequest
+    events:
+      - http:
+          path: resident-support-requests
+          method: post
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: false
+plugins:
+  - serverless-offline
