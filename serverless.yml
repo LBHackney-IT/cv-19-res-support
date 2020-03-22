@@ -23,5 +23,21 @@ functions:
               - X-Amz-Security-Token
               - X-Amz-User-Agent
             allowCredentials: false
+  getResidentSupportRequests:
+    handler: handler.getResidentSupportRequests
+    events:
+      - http:
+          path: resident-support-requests
+          method: get
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: false
 plugins:
   - serverless-offline
