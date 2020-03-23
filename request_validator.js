@@ -17,9 +17,6 @@ const validate = (data) =>
     if(data.postcode == null || data.postcode == ""){
         errors.push('Post code must be provided');
     }
-    if(data.uprn == null || data.uprn == ""){
-        errors.push('UPRN must be supplied');
-    }
     if((data.contact_telephone_number == null || data.contact_telephone_number == "") && (data.contact_mobile_number == null || data.contact_mobile_number == "")){
         errors.push('At least one contact number must be provided');
     }
