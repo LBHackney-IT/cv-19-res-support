@@ -57,6 +57,7 @@ const validateSupportRecord = (data) =>
     if(data.health_accessibility_needs == null ){
         errors.push('Please specify health accessiblity needs');
     }
+    return errors;
 }
 
 exports.validateSupportRecord = validateSupportRecord;

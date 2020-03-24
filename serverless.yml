@@ -39,7 +39,7 @@ functions:
               - X-Amz-Security-Token
               - X-Amz-User-Agent
             allowCredentials: false
-    createSupportVolunteerRecord:
+  createSupportVolunteerRecord:
     handler: handler.createSupportVolunteerRecord
     events:
       - http:
@@ -71,5 +71,5 @@ functions:
               - X-Amz-Security-Token
               - X-Amz-User-Agent
             allowCredentials: false
-            plugins:
+plugins:
   - serverless-offline
