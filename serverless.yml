@@ -39,5 +39,37 @@ functions:
               - X-Amz-Security-Token
               - X-Amz-User-Agent
             allowCredentials: false
-plugins:
+    createSupportVolunteerRecord:
+    handler: handler.createSupportVolunteerRecord
+    events:
+      - http:
+          path: support-volunteers
+          method: post
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: false
+  getSupportVolunteerRecords:
+    handler: handler.getSupportVolunteerRecords
+    events:
+      - http:
+          path: support-volunteers
+          method: get
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: false
+            plugins:
   - serverless-offline
