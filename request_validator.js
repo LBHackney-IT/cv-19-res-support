@@ -1,4 +1,4 @@
-const validate = (data) =>
+const validateResidentRequest = (data) =>
 {
     var errors = [];
     if(Object.keys(data).length < 28)
@@ -28,4 +28,36 @@ const validate = (data) =>
     }
     return errors;
 }
-exports.validate= validate;
+
+const validateSupportRecord = (data) =>
+{
+    var errors = [];
+    if(Object.keys(data).length < 26)
+    {
+        errors.push('All items must be supplied in the request');
+    }
+    if(data.first_name == null || data.first_name == ""){
+        errors.push('First name must be provided');
+    }
+    if(data.last_name == null || data.last_name == ""){
+        errors.push('Last name must be provided');
+    }
+    if(data.email_address == null || data.email_address == ""){
+        errors.push('Email address must be provided');
+    }
+    if(data.contact_telephone_number == null || data.contact_telephone_number == ""){
+        errors.push('A contact number must be provided');
+    }
+    if(data.wards == null || data.wards == ""){
+        errors.push('Wards must be provided');
+    }
+    if(data.age == null || data.age == ""){
+        errors.push('Age must be provided');
+    }
+    if(data.health_accessibility_needs == null ){
+        errors.push('Please specify health accessiblity needs');
+    }
+}
+
+exports.validateSupportRecord = validateSupportRecord;
+exports.validateResidentRequest = validateResidentRequest;

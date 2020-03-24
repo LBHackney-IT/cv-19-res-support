@@ -4,7 +4,7 @@ const validator = require('./request_validator');
 module.exports.createResidentSupportRequest = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
   const data = JSON.parse(event.body);
-  let validationErrors = validator.validate(data);
+  let validationErrors = validator.validateResidentRequest(data);
   if(validationErrors.length == 0)
   {
     db.insert('public.resident_requests', data)
@@ -70,7 +70,7 @@ module.exports.getResidentSupportRequests = (event, context, callback) => {
 module.exports.createSupportVolunteerRecord = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
   const data = JSON.parse(event.body);
-  //let validationErrors = validator.validate(data);
+  let validationErrors = validator.validateSupportRecord(data);
   if(validationErrors.length == 0)
   {
     db.insert('public.support_volunteers', data)
