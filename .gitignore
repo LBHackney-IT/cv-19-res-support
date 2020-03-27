@@ -9,3 +9,5 @@ package-lock.json
 /config/db.js
 
 .DS_Store
+
+.idea/

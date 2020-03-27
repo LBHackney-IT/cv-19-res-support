@@ -1,6 +1,5 @@
 module.exports = options => {
   const db = options.db;
-
   return data => {
     db.insert("public.resident_requests", data)
       .then(res => {
