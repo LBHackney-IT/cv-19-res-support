@@ -1,6 +1,6 @@
 
 describe("createResidentSupportRequest", () => {
-  it("it can insert resident requests", async () => {
+  it("it can insert resident requests", () => {
     const data = "x";
     const db = {
       insert: jest.fn(() => {
