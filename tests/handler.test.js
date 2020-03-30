@@ -1,10 +1,11 @@
 const data = "x";
+const response = 1;
 const db = {
   getAll: jest.fn(() => {
-    return Promise.resolve();
+    return Promise.resolve(data);
   }),
   insert: jest.fn(() => {
-    return Promise.resolve(data);
+    return Promise.resolve(response);
   })
 };
 

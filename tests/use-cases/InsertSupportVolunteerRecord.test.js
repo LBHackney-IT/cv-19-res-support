@@ -12,19 +12,19 @@ const db = {
         }
     })
 };
-const insertResidentRequests = require("../../use-cases/InsertResidentRequests.js")(
+const insertSupportVolunteerRecord = require("../../use-cases/InsertSupportVolunteerRecord.js")(
     { db }
 );
-describe("createResidentSupportRequest", () => {
+describe("createVolunteerSupportRecord", () => {
     it("can call the database insert function", () => {
-        insertResidentRequests(testData);
-        expect(db.insert).toHaveBeenCalledWith("public.resident_requests", testData);
+        insertSupportVolunteerRecord(testData);
+        expect(db.insert).toHaveBeenCalledWith("public.support_volunteers", testData);
     });
     it("returns the expected response from the database insert", async () => {
-        let resp = await insertResidentRequests(testData);
+        let resp = await insertSupportVolunteerRecord(testData);
         expect(resp).toBe(response);
     });
     it("throws an error if the database insert fails", async () => {
-        expect(insertResidentRequests()).rejects.toEqual("Error!");
+        expect(insertSupportVolunteerRecord()).rejects.toEqual("Error!");
     });
 });

@@ -1,7 +1,7 @@
 module.exports = options => {
   const db = options.db;
   return (params) => {
-    return db.getAll("public.resident_requests", params)
+    return db.getAll("public.support_volunteers", params)
         .then(res => {
           console.log("Response: "+ res);
           return res;
