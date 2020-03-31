@@ -16,7 +16,7 @@ const retrieveSupportVolunteerRecords = require("./use-cases/RetrieveSupportVolu
   db
 });
 
-const validator = require("./request_validator");
+const validator = require("./validators/request_validator");
 
 module.exports.createResidentSupportRequest = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
