@@ -26,6 +26,26 @@ const validateResidentRequest = (data) =>
     if(data.over_70 == true && data.under_70_with_health_condition == true){
         errors.push('A resident cannot be over 70 and under 70 at the same time');
     }
+    if(data.is_on_behalf == true)
+    {
+        if(data.on_behalf_first_name  == null || data.on_behalf_first_name == "")
+        {
+            errors.push('If you are completing this form on behalf of someone you must provide a first name');
+        }
+        if(data.on_behalf_last_name  == null || data.on_behalf_last_name == "")
+        {
+            errors.push('If you are completing this form on behalf of someone you must provide a last name');
+        }
+        if(data.on_behalf_email_address  == null || data.on_behalf_email_address == "")
+        {
+            errors.push('If you are completing this form on behalf of someone you must provide an email address');
+        }
+        if(data.on_behalf_contact_number  == null || data.on_behalf_contact_number == "")
+        {
+            errors.push('If you are completing this form on behalf of someone you must provide a contact number');
+        }
+    }
+
     return errors;
 }
 
