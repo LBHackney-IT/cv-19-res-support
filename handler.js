@@ -23,28 +23,27 @@ module.exports.createResidentSupportRequest = (event, context, callback) => {
   const data = JSON.parse(event.body);
   let validationErrors = validator.validateResidentRequest(data);
   if (validationErrors.length == 0) {
-    try {
-      let res = insertResidentRequests(data);
-      callback(null, {
-        statusCode: 200,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": true
-        },
-        body: JSON.stringify(res)
+    insertResidentRequests(data)
+      .then(res => {
+        callback(null, {
+          statusCode: 200,
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": true
+          },
+          body: JSON.stringify(res)
+        });
+      })
+      .catch(err => {
+        callback(null, {
+          statusCode: err.statusCode || 500,
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": true
+          },
+          body: "Error retrieving data " + err
+        });
       });
-    }
-    catch(err)
-    {
-      callback(null, {
-        statusCode: err.statusCode || 500,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": true
-        },
-        body: "Error retrieving data " + err
-      });
-    }
   } else {
     callback(null, {
       statusCode: 400,
@@ -85,10 +84,10 @@ module.exports.getResidentSupportRequests = (event, context, callback) => {
 module.exports.createSupportVolunteerRecord = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
   const data = JSON.parse(event.body);
-  let validationErrors = validator.validateResidentRequest(data);
+  let validationErrors = validator.validateSupportRecord(data);
   if (validationErrors.length == 0) {
-    try {
-      let res = insertSupportVolunteerRecord(data);
+  insertSupportVolunteerRecord(data)
+  .then(res => {
       callback(null, {
         statusCode: 200,
         headers: {
@@ -97,18 +96,17 @@ module.exports.createSupportVolunteerRecord = (event, context, callback) => {
         },
         body: JSON.stringify(res)
       });
-    }
-    catch(err)
-    {
-      callback(null, {
-        statusCode: err.statusCode || 500,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": true
-        },
-        body: "Error retrieving data " + err
-      });
-    }
+    })
+        .catch(err => {
+          callback(null, {
+            statusCode: err.statusCode || 500,
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Credentials": true
+            },
+            body: "Error retrieving data " + err
+          });
+        });
   } else {
     callback(null, {
       statusCode: 400,
