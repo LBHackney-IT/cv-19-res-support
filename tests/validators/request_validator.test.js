@@ -27,7 +27,10 @@ const valid_resident_request_string = `{
     "self_isolating_vulnerable_household" : true,
     "children_claim_free_school_meals" : true,
     "children_do_not_claim_free_school_meals" : false,
-    "date_time_recorded" : "2020-03-22 14:42:25.156"
+    "date_time_recorded" : "2020-03-22 14:42:25.156",
+    "dob_day" : "20",
+    "dob_month" : "01",
+    "dob_year" : "2007"
 }`;
 
 const valid_support_volunteer_record = `{
@@ -138,6 +141,29 @@ describe("validateResidentRequest", () => {
         expect(validationResponse).toContain('A resident cannot be over 70 and under 70 at the same time');
     });
 
+    it("can return an error array item for if dob_day is not provided in the request", () => {
+        let data = JSON.parse(valid_resident_request_string);
+        data.dob_day = null;
+        let validationResponse = validator.validateResidentRequest(data);
+        expect(validationResponse).toContain('Please specify the day of the date of birth');
+    });
+
+    it("can return an error array item for if dob_month is not provided in the request", () => {
+        let data = JSON.parse(valid_resident_request_string);
+        data.dob_month = null;
+        let validationResponse = validator.validateResidentRequest(data);
+        expect(validationResponse).toContain('Please specify the month of the date of birth');
+    });
+
+    it("can return an error array item for if dob_year is not provided in the request", () => {
+        let data = JSON.parse(valid_resident_request_string);
+        data.dob_year = null;
+        let validationResponse = validator.validateResidentRequest(data);
+        expect(validationResponse).toContain('Please specify the year of the date of birth');
+    });
+
+
+
 });
 
 describe("validateVolunteerSupportRecord", () => {
@@ -202,4 +228,10 @@ describe("validateVolunteerSupportRecord", () => {
         expect(validationResponse).toContain('Please specify health accessiblity needs');
     });
 
+    it("can return an error array item for if wards is not provided in the request", () => {
+        let data = JSON.parse(valid_support_volunteer_record);
+        data.wards = null;
+        let validationResponse = validator.validateSupportRecord(data);
+        expect(validationResponse).toContain('Wards must be provided');
+    });
 });
