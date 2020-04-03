@@ -17,7 +17,6 @@ const valid_resident_request_string = `{
     "email_address" : "test@test.com",
     "ward" : "Clissold",
     "gp_surgery_details" : "Test",
-    "any_help_available" : true,
     "days_worth_of_food" : 3,
     "number_of_people_in_house" : 2,
     "struggling_to_pay_for_food" : false,
@@ -27,10 +26,10 @@ const valid_resident_request_string = `{
     "consent_to_share_details" : true,
     "i_am_concerned_of" : "Test",
     "anything_else" : "Test",
-    "dob_day" : "20",
+    "dob_date" : "20",
     "dob_month" : "01",
     "dob_year" : "2007",
-    "date_recorded": "2020-03-22 14:42:25.156"
+    "date_time_recorded": "2020-03-22 14:42:25.156"
 }`;
 
 describe("validateResidentRequest", () => {
@@ -85,7 +84,7 @@ describe("validateResidentRequest", () => {
 
     it("can return an error array item for if dob_day is not provided in the request", () => {
         let data = JSON.parse(valid_resident_request_string);
-        data.dob_day = null;
+        data.dob_date = null;
         let validationResponse = validator.validateResidentRequest(data);
         expect(validationResponse).toContain('Please specify the day of the date of birth');
     });

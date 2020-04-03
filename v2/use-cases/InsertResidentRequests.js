@@ -4,7 +4,7 @@ module.exports = options => {
   return data => {
     console.log("Adding resident request");
     data = helper.set_urgent_food_flag(data);
-    return db.insert("public.Ineedhelp_resident_support", data)
+    return db.insert("public.ineedhelp_resident_support", data)
         .then(res => {
           console.log("Response: "+ res);
           return res;

@@ -17,7 +17,6 @@ const testData = `{
     "email_address" : "test@test.com",
     "ward" : "Clissold",
     "gp_surgery_details" : "Test",
-    "any_help_available" : true,
     "days_worth_of_food" : 3,
     "number_of_people_in_house" : 2,
     "struggling_to_pay_for_food" : false,
@@ -27,10 +26,10 @@ const testData = `{
     "consent_to_share_details" : true,
     "i_am_concerned_of" : "Test",
     "anything_else" : "Test",
-    "dob_day" : "20",
+    "dob_date" : "20",
     "dob_month" : "01",
     "dob_year" : "2007",
-    "date_recorded": "2020-03-22 14:42:25.156"
+    "date_time_recorded": "2020-03-22 14:42:25.156"
 }`;
 const db = {
     insert: jest.fn((data, params) => {
@@ -55,7 +54,7 @@ const insertResidentRequests = require("../../use-cases/InsertResidentRequests.j
 describe("createResidentSupportRequest", () => {
     it("can call the database insert function", () => {
         insertResidentRequests(testData);
-        expect(db.insert).toHaveBeenCalledWith("public.Ineedhelp_resident_support", testData);
+        expect(db.insert).toHaveBeenCalledWith("public.ineedhelp_resident_support", testData);
     });
     it("can call the set_urgent_food_flag function", () => {
         insertResidentRequests(JSON.stringify(testData));

@@ -54,7 +54,7 @@ const validateResidentRequest = (data) =>
             errors.push('If you are completing this form on behalf of someone you must provide a contact number');
         }
     }
-    if(data.dob_day == null || data.dob_day == "")
+    if(data.dob_date == null || data.dob_date == "")
     {
         errors.push('Please specify the day of the date of birth');
     }

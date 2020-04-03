@@ -1,22 +1,16 @@
 "use strict";
 const db = require("./db_connect");
-const insertResidentRequests = require("./v1/use-cases/InsertResidentRequests")({
+const helper = require("./v2/helpers/ResidentRequestHelpers");
+const insertResidentRequests = require("./v2/use-cases/InsertResidentRequests")({
+  db,
+  helper
+});
+
+const retrieveResidentRequests = require("./v2/use-cases/RetrieveResidentRequests")({
   db
 });
 
-const retrieveResidentRequests = require("./v1/use-cases/RetrieveResidentRequests")({
-  db
-});
-
-const insertSupportVolunteerRecord = require("./v1/use-cases/InsertSupportVolunteerRecord")({
-  db
-});
-
-const retrieveSupportVolunteerRecords = require("./v1/use-cases/RetrieveSupportVolunteerRecords")({
-  db
-});
-
-const validator = require("./v1/validators/request_validator");
+const validator = require("./v2/validators/request_validator");
 
 module.exports.createResidentSupportRequest = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;

@@ -17,7 +17,7 @@ const retrieveResidentRequests = require("../../use-cases/RetrieveResidentReques
 describe("getResidentSupportRequest", () => {
     it("can call the database getAll function", () => {
         retrieveResidentRequests();
-        expect(db.getAll).toHaveBeenCalledWith("public.Ineedhelp_resident_support",undefined);
+        expect(db.getAll).toHaveBeenCalledWith("public.ineedhelp_resident_support",undefined);
     });
     it("returns the expected response from the database getAll", async () => {
         let resp = await retrieveResidentRequests();
