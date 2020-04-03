@@ -45,7 +45,18 @@ const validateResidentRequest = (data) =>
             errors.push('If you are completing this form on behalf of someone you must provide a contact number');
         }
     }
-
+    if(data.dob_day == null || data.dob_day == "")
+    {
+        errors.push('Please specify the day of the date of birth');
+    }
+    if(data.dob_month == null || data.dob_month == "")
+    {
+        errors.push('Please specify the month of the date of birth');
+    }
+    if(data.dob_year == null || data.dob_year == "")
+    {
+        errors.push('Please specify the year of the date of birth');
+    }
     return errors;
 }
 
