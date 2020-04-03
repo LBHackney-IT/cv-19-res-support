@@ -32,6 +32,7 @@ const valid_resident_request_string = `{
     "date_time_recorded": "2020-03-22 14:42:25.156"
 }`;
 
+
 describe("validateResidentRequest", () => {
     it("can return an empty error array if the number of fields in the request is valid", () => {
         let data = JSON.parse(valid_resident_request_string);
