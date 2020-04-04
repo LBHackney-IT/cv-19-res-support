@@ -34,25 +34,25 @@ const testDataString = `{
     "date_recorded": "2020-03-22 14:42:25.156"
 }`;
 describe("validateResidentRequest", () => {
-    it("sets the urgent_food flag to false if days_worth_of_food is less than 2", () => {
+    it("sets the urgent_food flag to true if days_worth_of_food is less than 2", () => {
         let testData = JSON.parse(testDataString);
         testData.days_worth_of_food = 1;
         let data = helper.set_urgent_food_flag(testData);
         expect(data.urgent_food).toEqual(true);
     });
-    it("sets the urgent_food flag to false if days_worth_of_food is less than 2", () => {
+    it("sets the urgent_food flag to false if days_worth_of_food is greater than 1", () => {
         let testData = JSON.parse(testDataString);
         testData.days_worth_of_food = 7;
         let data = helper.set_urgent_food_flag(testData);
         expect(data.urgent_food).toEqual(false);
     });
-    it("sets the urgent_medicines flag to false if days_worth_of_medicines is less than 2", () => {
+    it("sets the urgent_medicines flag to true if days_worth_of_medicines is less than 2", () => {
         let testData = JSON.parse(testDataString);
         testData.days_worth_of_medicines = 1;
         let data = helper.set_urgent_medicines_flag(testData);
         expect(data.urgent_medicines).toEqual(true);
     });
-    it("sets the urgent_medicines flag to false if days_worth_of_medicines is less than 2", () => {
+    it("sets the urgent_medicines flag to false if days_worth_of_medicines is greater than 1", () => {
         let testData = JSON.parse(testDataString);
         testData.days_worth_of_medicines = 7;
         let data = helper.set_urgent_medicines_flag(testData);
