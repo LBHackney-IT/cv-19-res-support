@@ -29,6 +29,9 @@ const validateResidentRequest = (data) =>
     if(data.days_worth_of_food == null || data.days_worth_of_food == ""){
         errors.push('Days worth of food must be provided');
     }
+    if(data.days_worth_of_medicines == null || data.days_worth_of_medicines == ""){
+        errors.push('Days worth of medicines must be provided');
+    }
     if(data.number_of_people_in_house == null || data.number_of_people_in_house == ""){
         errors.push('Number of people in the house must be provided');
     }
@@ -54,7 +57,7 @@ const validateResidentRequest = (data) =>
             errors.push('If you are completing this form on behalf of someone you must provide a contact number');
         }
     }
-    if(data.dob_date == null || data.dob_date == "")
+    if(data.dob_day == null || data.dob_day == "")
     {
         errors.push('Please specify the day of the date of birth');
     }
@@ -68,5 +71,4 @@ const validateResidentRequest = (data) =>
     }
     return errors;
 }
-
 exports.validateResidentRequest = validateResidentRequest;

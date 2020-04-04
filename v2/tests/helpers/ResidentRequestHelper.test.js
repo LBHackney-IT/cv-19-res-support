@@ -19,6 +19,7 @@ const testDataString = `{
     "gp_surgery_details" : "Test",
     "any_help_available" : true,
     "days_worth_of_food" : 3,
+    "days_worth_of_medicines" : 3,
     "number_of_people_in_house" : 2,
     "struggling_to_pay_for_food" : false,
     "is_pharmacist_able_to_deliver" : false,
@@ -32,7 +33,6 @@ const testDataString = `{
     "dob_year" : "2007",
     "date_recorded": "2020-03-22 14:42:25.156"
 }`;
-
 describe("validateResidentRequest", () => {
     it("sets the urgent_food flag to false if days_worth_of_food is less than 2", () => {
         let testData = JSON.parse(testDataString);
@@ -45,5 +45,17 @@ describe("validateResidentRequest", () => {
         testData.days_worth_of_food = 7;
         let data = helper.set_urgent_food_flag(testData);
         expect(data.urgent_food).toEqual(false);
+    });
+    it("sets the urgent_medicines flag to false if days_worth_of_medicines is less than 2", () => {
+        let testData = JSON.parse(testDataString);
+        testData.days_worth_of_medicines = 1;
+        let data = helper.set_urgent_medicines_flag(testData);
+        expect(data.urgent_medicines).toEqual(true);
+    });
+    it("sets the urgent_medicines flag to false if days_worth_of_medicines is less than 2", () => {
+        let testData = JSON.parse(testDataString);
+        testData.days_worth_of_medicines = 7;
+        let data = helper.set_urgent_medicines_flag(testData);
+        expect(data.urgent_medicines).toEqual(false);
     });
 });

@@ -9,4 +9,18 @@ const set_urgent_food_flag = (data) =>
     }
     return data;
 }
+
+const set_urgent_medicines_flag = (data) =>
+{
+    if(data != undefined) {
+        if (data.days_worth_of_medicines< 2) {
+            data.urgent_medicines = true
+        } else {
+            data.urgent_medicines = false
+        }
+    }
+    return data;
+}
+
+exports.set_urgent_medicines_flag = set_urgent_medicines_flag;
 exports.set_urgent_food_flag = set_urgent_food_flag;
