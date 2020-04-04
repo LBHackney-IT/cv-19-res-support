@@ -46,6 +46,9 @@ const db = {
 const helper = {
     set_urgent_food_flag: jest.fn((data) => {
         return data;
+    }),
+    set_urgent_medicines_flag: jest.fn((data) => {
+        return data;
     })
 };
 const insertResidentRequests = require("../../use-cases/InsertResidentRequests.js")(
