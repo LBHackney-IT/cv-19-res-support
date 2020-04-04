@@ -11,7 +11,7 @@ const db = {
 
 describe("getResidentSupportRequests", () => {
   it("it can get resident requests", () => {
-    const retrieveResidentRequests = require("../use-cases/RetrieveResidentRequests")(
+    const retrieveResidentRequests = require("../../v1/use-cases/RetrieveResidentRequests")(
       { db }
     );
     retrieveResidentRequests();
@@ -21,7 +21,7 @@ describe("getResidentSupportRequests", () => {
 
 describe("createResidentSupportRequest", () => {
   it("it can insert resident requests", () => {
-    const insertResidentRequests = require("../use-cases/InsertResidentRequests")(
+    const insertResidentRequests = require("../../v1/use-cases/InsertResidentRequests")(
         { db }
     );
     insertResidentRequests(data);
