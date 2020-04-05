@@ -18,6 +18,8 @@ const retrieveSupportVolunteerRecords = require("./v1/use-cases/RetrieveSupportV
 
 const validator = require("./v1/validators/request_validator");
 
+const healthChecks = require("./v1/use-cases/HealthChecks");
+
 module.exports.createResidentSupportRequest = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
   const data = JSON.parse(event.body);
@@ -142,4 +144,34 @@ module.exports.getSupportVolunteerRecords = (event, context, callback) => {
           body: "Error retrieving data " + err
         });
       });
+};
+
+module.exports.status = (event, context, callback) => {
+  console.log("Status handler called.");
+  let res = healthChecks.status();
+  callback(null, {
+    statusCode: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true
+    },
+    body: JSON.stringify(res)
+  });
+};
+
+module.exports.error = (event, context, callback) => {
+  try {
+    healthChecks.error();
+  }
+  catch(err) {
+    console.error(err);
+    callback(null, {
+      statusCode: 500,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+      },
+      body: JSON.stringify({ Error:   err })
+    });
+  }
 };
