@@ -7,11 +7,11 @@ module.exports = options => {
     data = helper.set_urgent_medicines_flag(data);
     return db.insert("public.ineedhelp_resident_support", data)
         .then(res => {
-          console.log("Response: "+ res);
+          console.log("SUCCESS: "+ res);
           return res;
         })
         .catch(e => {
-          console.log("Error: " + e);
+          console.log("ERROR: " + e);
           throw e });
   };
 };
