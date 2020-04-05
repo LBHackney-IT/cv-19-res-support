@@ -147,7 +147,7 @@ module.exports.getSupportVolunteerRecords = (event, context, callback) => {
 };
 
 module.exports.status = (event, context, callback) => {
-  console.log("INFO: Status handler called.")
+  console.log("Status handler called.");
   let res = healthChecks.status();
   callback(null, {
     statusCode: 200,
@@ -164,6 +164,7 @@ module.exports.error = (event, context, callback) => {
     healthChecks.error();
   }
   catch(err) {
+    console.error(err);
     callback(null, {
       statusCode: 500,
       headers: {
