@@ -5,7 +5,7 @@ const status = () => {
 }
 
 const error = () => {
-    throw new Error();
+    throw 'Expected Error Thrown!';
 }
 
 exports.status = status;
