@@ -8,9 +8,6 @@ const db = {
     return Promise.resolve(response);
   })
 };
-const healthCheckStatus = {
-  status: "Success"
-}
 
 describe("getResidentSupportRequests", () => {
   it("it can get resident requests", () => {
@@ -19,6 +16,16 @@ describe("getResidentSupportRequests", () => {
     );
     retrieveResidentRequests();
     expect(db.getAll).toReturn();
+  });
+});
+
+describe("createResidentSupportRequest", () => {
+  it("it can insert resident requests", () => {
+    const insertResidentRequests = require("../../v1/use-cases/InsertResidentRequests")(
+        { db }
+    );
+    insertResidentRequests(data);
+    expect(db.insert).toHaveBeenCalledWith(expect.anything(), data);
   });
 });
 
