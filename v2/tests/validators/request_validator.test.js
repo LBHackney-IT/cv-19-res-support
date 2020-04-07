@@ -70,12 +70,6 @@ describe("validateResidentRequest", () => {
         let validationResponse = validator.validateResidentRequest(data);
         expect(validationResponse).toContain('Contact telephone number must be provided');
     });
-    it("can return an error array item for if email_address is not provided in the request", () => {
-        let data = JSON.parse(valid_resident_request_string);
-        data.email_address = null;
-        let validationResponse = validator.validateResidentRequest(data);
-        expect(validationResponse).toContain('Email address must be provided');
-    });
     it("can return an error array item for if dob_day is not provided in the request", () => {
         let data = JSON.parse(valid_resident_request_string);
         data.dob_day = null;

@@ -20,9 +20,6 @@ const validateResidentRequest = (data) =>
     if(data.uprn == null || data.uprn == ""){
         errors.push('UPRN must be provided');
     }
-    if(data.email_address == null || data.email_address == ""){
-        errors.push('Email address must be provided');
-    }
     if(data.contact_telephone_number == null || data.contact_telephone_number == ""){
         errors.push('Contact telephone number must be provided');
     }
