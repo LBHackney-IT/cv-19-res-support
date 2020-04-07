@@ -23,12 +23,6 @@ const validateResidentRequest = (data) =>
     if(data.contact_telephone_number == null || data.contact_telephone_number == ""){
         errors.push('Contact telephone number must be provided');
     }
-    if(data.days_worth_of_food == null || data.days_worth_of_food == ""){
-        errors.push('Days worth of food must be provided');
-    }
-    if(data.number_of_people_in_house == null || data.number_of_people_in_house == ""){
-        errors.push('Number of people in the house must be provided');
-    }
     if(data.gp_surgery_details == null || data.gp_surgery_details == ""){
         errors.push('GP surgery details must be provided');
     }
