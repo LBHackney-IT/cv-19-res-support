@@ -29,6 +29,7 @@ module.exports.createResidentSupportRequest = (event, context, callback) => {
         });
       })
       .catch(err => {
+        console.error(err);
         callback(null, {
           statusCode: err.statusCode || 500,
           headers: {
@@ -39,6 +40,7 @@ module.exports.createResidentSupportRequest = (event, context, callback) => {
         });
       });
   } else {
+    console.error(validationErrors);
     callback(null, {
       statusCode: 400,
       headers: {
@@ -64,69 +66,7 @@ module.exports.getResidentSupportRequests = (event, context, callback) => {
       });
       })
       .catch(err => {
-        callback(null, {
-          statusCode: err.statusCode || 500,
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Credentials": true
-          },
-          body: "Error retrieving data " + err
-        });
-      });
-};
-
-module.exports.createSupportVolunteerRecord = (event, context, callback) => {
-  context.callbackWaitsForEmptyEventLoop = false;
-  const data = JSON.parse(event.body);
-  let validationErrors = validator.validateSupportRecord(data);
-  if (validationErrors.length == 0) {
-  insertSupportVolunteerRecord(data)
-  .then(res => {
-      callback(null, {
-        statusCode: 200,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": true
-        },
-        body: JSON.stringify(res)
-      });
-    })
-        .catch(err => {
-          callback(null, {
-            statusCode: err.statusCode || 500,
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Credentials": true
-            },
-            body: "Error retrieving data " + err
-          });
-        });
-  } else {
-    callback(null, {
-      statusCode: 400,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": true
-      },
-      body: JSON.stringify(validationErrors)
-    });
-  }
-};
-
-module.exports.getSupportVolunteerRecords = (event, context, callback) => {
-  context.callbackWaitsForEmptyEventLoop = false;
-  retrieveSupportVolunteerRecords()
-      .then(res => {
-        callback(null, {
-          statusCode: 200,
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Credentials": true
-          },
-          body: JSON.stringify(res)
-        });
-      })
-      .catch(err => {
+        console.error(err);
         callback(null, {
           statusCode: err.statusCode || 500,
           headers: {

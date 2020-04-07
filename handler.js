@@ -37,6 +37,7 @@ module.exports.createResidentSupportRequest = (event, context, callback) => {
         });
       })
       .catch(err => {
+        console.error(err);
         callback(null, {
           statusCode: err.statusCode || 500,
           headers: {
@@ -72,6 +73,7 @@ module.exports.getResidentSupportRequests = (event, context, callback) => {
       });
       })
       .catch(err => {
+        console.error(err);
         callback(null, {
           statusCode: err.statusCode || 500,
           headers: {
@@ -100,6 +102,7 @@ module.exports.createSupportVolunteerRecord = (event, context, callback) => {
       });
     })
         .catch(err => {
+          console.error(err);
           callback(null, {
             statusCode: err.statusCode || 500,
             headers: {
@@ -135,6 +138,7 @@ module.exports.getSupportVolunteerRecords = (event, context, callback) => {
         });
       })
       .catch(err => {
+        console.error(err);
         callback(null, {
           statusCode: err.statusCode || 500,
           headers: {

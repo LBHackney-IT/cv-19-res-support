@@ -118,12 +118,6 @@ describe("validateResidentRequest", () => {
         let validationResponse = validator.validateResidentRequest(data);
         expect(validationResponse).toContain('Days worth of food must be provided');
     });
-    it("can return an error array item for if days_worth_of_medicines is not provided in the request", () => {
-        let data = JSON.parse(valid_resident_request_string);
-        data.days_worth_of_medicines = null;
-        let validationResponse = validator.validateResidentRequest(data);
-        expect(validationResponse).toContain('Days worth of medicines must be provided');
-    });
     it("can return an error array item for if is_on_behalf is selected and on_behalf_first_name is not specified", () => {
         let data = JSON.parse(valid_resident_request_string);
         data.is_on_behalf = true;

@@ -29,9 +29,6 @@ const validateResidentRequest = (data) =>
     if(data.days_worth_of_food == null || data.days_worth_of_food == ""){
         errors.push('Days worth of food must be provided');
     }
-    if(data.days_worth_of_medicines == null || data.days_worth_of_medicines == ""){
-        errors.push('Days worth of medicines must be provided');
-    }
     if(data.number_of_people_in_house == null || data.number_of_people_in_house == ""){
         errors.push('Number of people in the house must be provided');
     }

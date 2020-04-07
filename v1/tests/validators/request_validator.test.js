@@ -141,27 +141,6 @@ describe("validateResidentRequest", () => {
         expect(validationResponse).toContain('A resident cannot be over 70 and under 70 at the same time');
     });
 
-    it("can return an error array item for if dob_day is not provided in the request", () => {
-        let data = JSON.parse(valid_resident_request_string);
-        data.dob_day = null;
-        let validationResponse = validator.validateResidentRequest(data);
-        expect(validationResponse).toContain('Please specify the day of the date of birth');
-    });
-
-    it("can return an error array item for if dob_month is not provided in the request", () => {
-        let data = JSON.parse(valid_resident_request_string);
-        data.dob_month = null;
-        let validationResponse = validator.validateResidentRequest(data);
-        expect(validationResponse).toContain('Please specify the month of the date of birth');
-    });
-
-    it("can return an error array item for if dob_year is not provided in the request", () => {
-        let data = JSON.parse(valid_resident_request_string);
-        data.dob_year = null;
-        let validationResponse = validator.validateResidentRequest(data);
-        expect(validationResponse).toContain('Please specify the year of the date of birth');
-    });
-
 
 
 });

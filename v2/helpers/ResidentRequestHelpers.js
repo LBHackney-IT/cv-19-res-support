@@ -13,7 +13,11 @@ const set_urgent_food_flag = (data) =>
 const set_urgent_medicines_flag = (data) =>
 {
     if(data != undefined) {
-        if (data.days_worth_of_medicines< 2) {
+        if(data.days_worth_of_medicines == null || data.days_worth_of_medicines == undefined)
+        {
+            data.urgent_medicines = false
+        }
+        else if (data.days_worth_of_medicines< 2) {
             data.urgent_medicines = true
         } else {
             data.urgent_medicines = false
